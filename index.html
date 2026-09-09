@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio - Aura Zulaikha, S.Tr.Kom</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap');
@@ -44,18 +49,18 @@
     }
   </style>
 </head>
-<body class="bg-white text-slate-800 antialiased selection:bg-pink-200 selection:text-pink-900 overflow-x-hidden">
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 antialiased selection:bg-pink-200 selection:text-pink-900 overflow-x-hidden transition-colors duration-300">
 
   <!-- NAVIGATION -->
-  <nav id="navbar" class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-pink-100 z-50 transition-all duration-300">
+  <nav id="navbar" class="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-pink-100 dark:border-slate-800 z-50 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-3xl font-aesthetic font-bold tracking-wide text-slate-900 flex items-center gap-2 group">
+      <a href="#" class="text-3xl font-aesthetic font-bold tracking-wide text-slate-900 dark:text-white flex items-center gap-2 group">
         <span class="w-3 h-3 rounded-full bg-pink-500 inline-block transition-transform duration-300 group-hover:scale-125"></span>
         Aura<span class="text-pink-500">Zulaikha</span>.dev
       </a>
       
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex space-x-7 text-sm font-semibold text-slate-600">
+      <div class="hidden md:flex items-center space-x-7 text-sm font-semibold text-slate-600 dark:text-slate-300">
         <a href="#about" class="nav-link hover:text-pink-500 transition-colors duration-200">About</a>
         <a href="#education" class="nav-link hover:text-pink-500 transition-colors duration-200">Education</a>
         <a href="#skills" class="nav-link hover:text-pink-500 transition-colors duration-200">Skills</a>
@@ -63,16 +68,28 @@
         <a href="#training" class="nav-link hover:text-pink-500 transition-colors duration-200">Trainings</a>
         <a href="#projects" class="nav-link hover:text-pink-500 transition-colors duration-200">Projects</a>
         <a href="#contact" class="nav-link hover:text-pink-500 transition-colors duration-200">Contact</a>
+        
+        <!-- Desktop Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors focus:outline-none" aria-label="Toggle Theme">
+          <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden"></i>
+        </button>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <button id="menu-btn" class="md:hidden text-slate-700 hover:text-pink-500 focus:outline-none p-2 transition-transform duration-200 active:scale-95" aria-label="Toggle Menu">
-        <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
-      </button>
+      <!-- Mobile Right Controls (Hamburger + Dark Mode Toggle) -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-pink-500 focus:outline-none" aria-label="Toggle Theme Mobile">
+          <i id="theme-toggle-dark-icon-mobile" class="fa-solid fa-moon hidden"></i>
+          <i id="theme-toggle-light-icon-mobile" class="fa-solid fa-sun hidden"></i>
+        </button>
+        <button id="menu-btn" class="text-slate-700 dark:text-slate-200 hover:text-pink-500 focus:outline-none p-2 transition-transform duration-200 active:scale-95" aria-label="Toggle Menu">
+          <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-pink-100 px-6 py-4 flex flex-col space-y-3 font-semibold text-sm text-slate-600 transition-all duration-300 shadow-lg">
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-b border-pink-100 dark:border-slate-800 px-6 py-4 flex flex-col space-y-3 font-semibold text-sm text-slate-600 dark:text-slate-300 transition-all duration-300 shadow-lg">
       <a href="#about" class="mobile-link hover:text-pink-500 py-1 transition-colors">About</a>
       <a href="#education" class="mobile-link hover:text-pink-500 py-1 transition-colors">Education</a>
       <a href="#skills" class="mobile-link hover:text-pink-500 py-1 transition-colors">Skills</a>
@@ -84,22 +101,22 @@
   </nav>
 
   <!-- HERO / INTRODUCTION SECTION -->
-  <section id="about" class="min-h-screen flex items-center pt-28 pb-12 relative bg-gradient-to-b from-white via-pink-50/30 to-white overflow-hidden">
+  <section id="about" class="min-h-screen flex items-center pt-28 pb-12 relative bg-gradient-to-b from-white via-pink-50/30 to-white dark:from-slate-900 dark:via-slate-800/40 dark:to-slate-900 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center relative z-10">
       
       <!-- Teks Perkenalan -->
       <div class="order-2 md:order-1 md:col-span-7 text-center md:text-left reveal">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Hello, I’m <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-pink-600 to-pink-500">Aura Zulaikha, S.Tr.Kom</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+            Hello, I’m <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-pink-600 to-pink-500 dark:from-white dark:via-pink-400 dark:to-pink-500">Aura Zulaikha, S.Tr.Kom</span>
         </h1>
-        <p class="text-base md:text-lg text-slate-600 mt-4 leading-relaxed font-normal">
+        <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
             As a fresh graduate from Politeknik Negeri Padang majoring in Software Engineering Technology, I have a strong interest in mobile and web application development, Machine Learning, Artificial Intelligence, and Data and Information Processing. I have hands-on experience in building AI-powered mobile applications for image classification using Flutter, Python, TensorFlow, and Flask, supported by MySQL database management. Additionally, I am experienced in web development using Laravel and Vue.js, as well as VPS application deployment through internships and industrial training programs.
         </p>
         <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
-          <a href="#projects" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 shadow-md shadow-pink-200 hover:shadow-lg hover:shadow-pink-300 hover:-translate-y-1 active:translate-y-0">
+          <a href="#projects" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-xl transition duration-300 shadow-md shadow-pink-200 dark:shadow-pink-900/40 hover:shadow-lg hover:shadow-pink-300 hover:-translate-y-1 active:translate-y-0">
              Lihat Proyek
           </a>
-          <a href="#contact" class="bg-white hover:bg-pink-50 text-slate-700 font-semibold px-6 py-3 rounded-xl transition duration-300 border border-pink-200/80 hover:border-pink-300 hover:-translate-y-1 active:translate-y-0 shadow-sm">
+          <a href="#contact" class="bg-white dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3 rounded-xl transition duration-300 border border-pink-200/80 dark:border-slate-700 hover:border-pink-300 hover:-translate-y-1 active:translate-y-0 shadow-sm">
              Hubungi Saya
           </a>
         </div>
@@ -107,10 +124,10 @@
       
       <!-- Container Bingkai Foto -->
       <div class="order-1 md:order-2 md:col-span-5 flex justify-center relative reveal">
-        <div class="animate-float relative w-64 sm:w-72 md:w-80 h-[340px] sm:h-[380px] md:h-[400px] rounded-t-full rounded-b-3xl pt-6 px-4 bg-gradient-to-b from-pink-100/90 via-pink-50 to-white border-2 border-pink-200/80 shadow-xl shadow-pink-100/60 flex items-end justify-center overflow-hidden group">
+        <div class="animate-float relative w-64 sm:w-72 md:w-80 h-[340px] sm:h-[380px] md:h-[400px] rounded-t-full rounded-b-3xl pt-6 px-4 bg-gradient-to-b from-pink-100/90 via-pink-50 to-white dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-900 border-2 border-pink-200/80 dark:border-pink-500/30 shadow-xl shadow-pink-100/60 dark:shadow-pink-950/20 flex items-end justify-center overflow-hidden group">
           
           <!-- Latar Belakang Cahaya Pink Halus -->
-          <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-pink-300/40 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
+          <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-pink-300/40 dark:bg-pink-500/20 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500"></div>
 
           <!-- Foto Profil -->
           <img 
@@ -126,104 +143,104 @@
   </section>
 
   <!-- EDUCATION SECTION -->
-  <section id="education" class="py-20 bg-white border-t border-slate-100">
+  <section id="education" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-8 reveal">
         <div class="w-2.5 h-7 bg-pink-500 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Education</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Education</h2>
       </div>
       
-      <div class="bg-gradient-to-r from-pink-50/40 via-white to-pink-50/20 p-6 sm:p-8 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition duration-300 relative reveal group">
+      <div class="bg-gradient-to-r from-pink-50/40 via-white to-pink-50/20 dark:from-slate-800/60 dark:via-slate-800 dark:to-slate-800/40 p-6 sm:p-8 rounded-2xl border border-pink-100 dark:border-slate-700/80 shadow-sm hover:shadow-md transition duration-300 relative reveal group">
         <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-2">
           <div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-pink-600 transition-colors">Politeknik Negeri Padang</h3>
-            <p class="text-pink-600 font-medium text-sm mt-0.5">Teknologi Informasi / Teknologi Rekayasa Perangkat Lunak</p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Politeknik Negeri Padang</h3>
+            <p class="text-pink-600 dark:text-pink-400 font-medium text-sm mt-0.5">Teknologi Informasi / Teknologi Rekayasa Perangkat Lunak</p>
           </div>
-          <span class="inline-block bg-white text-slate-600 font-medium px-3.5 py-1.5 rounded-lg text-xs border border-pink-200/60 shadow-sm w-max group-hover:border-pink-300 transition"> 
+          <span class="inline-block bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-medium px-3.5 py-1.5 rounded-lg text-xs border border-pink-200/60 dark:border-slate-700 shadow-sm w-max group-hover:border-pink-300 transition"> 
             <b>
                 Tahun : 2022 - 2026  | 
                 IPK : 3.80 / 4.00 (Cum Laude)
             </b>
           </span>
         </div>
-        <p class="text-slate-600 text-sm md:text-base leading-relaxed mt-4">
-          <strong class="text-slate-800 font-semibold">Tugas Akhir :</strong> Optimasi Transfer Learning EfficientNet-B2 untuk Meningkatkan Akurasi Klasifikasi Penyakit Daun Pisang pada Platform Mobile.
+        <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mt-4">
+          <strong class="text-slate-800 dark:text-slate-100 font-semibold">Tugas Akhir :</strong> Optimasi Transfer Learning EfficientNet-B2 untuk Meningkatkan Akurasi Klasifikasi Penyakit Daun Pisang pada Platform Mobile.
         </p>
       </div>
     </div>
   </section>
 
   <!-- SKILLS SECTION -->
-  <section id="skills" class="py-20 bg-gradient-to-b from-white via-pink-50/20 to-white">
+  <section id="skills" class="py-20 bg-gradient-to-b from-white via-pink-50/20 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-10 reveal">
         <div class="w-2.5 h-7 bg-pink-500 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Skills & Specializations</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Skills & Specializations</h2>
       </div>
       
       <!-- 3 Card Keahlian -->
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
         
         <!-- Category 1 -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:border-pink-300 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group">
-          <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-pink-100 dark:border-slate-700 shadow-sm hover:border-pink-300 dark:hover:border-pink-500/50 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group">
+          <div class="w-10 h-10 bg-pink-50 dark:bg-slate-700 text-pink-500 dark:text-pink-400 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-code"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Bahasa Pemrograman</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Bahasa Pemrograman</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Dart</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Python</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">PHP</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Java</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">JavaScript</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">SQL</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Dart</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Python</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">PHP</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Java</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">JavaScript</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">SQL</span>
           </div>
         </div>
 
         <!-- Category 2 -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:border-pink-300 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group">
-          <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-pink-100 dark:border-slate-700 shadow-sm hover:border-pink-300 dark:hover:border-pink-500/50 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group">
+          <div class="w-10 h-10 bg-pink-50 dark:bg-slate-700 text-pink-500 dark:text-pink-400 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-layer-group"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Framework & Tools</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Framework & Tools</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Flutter</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">TensorFlow</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Laravel</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Flask</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Vue.js</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Figma</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">GitHub</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Visual Studio Code</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Trello</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Flutter</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">TensorFlow</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Laravel</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Flask</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Vue.js</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Figma</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">GitHub</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Visual Studio Code</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Trello</span>
           </div>
         </div>
 
         <!-- Category 3 -->
-        <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm hover:border-pink-300 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group sm:col-span-2 md:col-span-1">
-          <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-pink-100 dark:border-slate-700 shadow-sm hover:border-pink-300 dark:hover:border-pink-500/50 hover:shadow-md transition duration-300 hover:-translate-y-1.5 reveal group sm:col-span-2 md:col-span-1">
+          <div class="w-10 h-10 bg-pink-50 dark:bg-slate-700 text-pink-500 dark:text-pink-400 rounded-xl flex items-center justify-center text-lg mb-4 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-database"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Database & API</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Database & API</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">MySQL / phpMyAdmin</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">REST API</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">Postman</span>
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-pink-100 hover:text-pink-700 transition cursor-default">HeidiSQL</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">MySQL / phpMyAdmin</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">REST API</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">Postman</span>
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition cursor-default">HeidiSQL</span>
           </div>
         </div>
 
       </div>
 
       <!-- Card Gambar Logo Gabungan/Tech Stack -->
-      <div class="bg-white p-6 sm:p-8 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition duration-300 reveal">
+      <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-md transition duration-300 reveal">
         <div class="text-center mb-6">
-          <h3 class="text-lg font-bold text-slate-900">Tech Stack & Tools Ecosystem</h3>
-          <p class="text-slate-500 text-xs sm:text-sm mt-1">Gambaran visual ekosistem teknologi yang biasa digunakan dalam proyek.</p>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tech Stack & Tools Ecosystem</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Gambaran visual ekosistem teknologi yang biasa digunakan dalam proyek.</p>
         </div>
         
         <!-- Container Gambar Logo -->
-        <div class="bg-gradient-to-b from-pink-50/30 to-slate-50/50 p-4 sm:p-6 rounded-xl border border-pink-100 flex justify-center items-center overflow-hidden">
+        <div class="bg-gradient-to-b from-pink-50/30 to-slate-50/50 dark:from-slate-900/50 dark:to-slate-900/80 p-4 sm:p-6 rounded-xl border border-pink-100 dark:border-slate-700/80 flex justify-center items-center overflow-hidden">
           <img 
             src="logo.png" 
             alt="Kumpulan Logo Tech Stack" 
@@ -236,33 +253,33 @@
   </section>
 
   <!-- EXPERIENCE SECTION -->
-  <section id="experience" class="py-20 bg-white border-t border-slate-100">
+  <section id="experience" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-10 reveal">
         <div class="w-2.5 h-7 bg-pink-500 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Work Experience</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Work Experience</h2>
       </div>
 
       <div class="space-y-8">
         
         <!-- Experience Item 1 -->
-        <div class="bg-white rounded-2xl border border-pink-100 shadow-sm hover:shadow-lg transition duration-300 overflow-hidden border-l-4 border-l-pink-500 p-6 sm:p-8 reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-lg transition duration-300 overflow-hidden border-l-4 border-l-pink-500 p-6 sm:p-8 reveal">
           
           <!-- Deskripsi Pengalaman -->
           <div>
-            <span class="text-xs font-semibold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">
+            <span class="text-xs font-semibold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">
               Aug 2025 - Nov 2025
             </span>
-            <h3 class="text-xl font-bold text-slate-900 mt-3">Web Developer Intern</h3>
-            <p class="text-slate-500 text-sm font-medium mb-4">PT Jago Talenta Indonesia (JagooIT) - Kota Bandung, Jawa Barat</p>
-            <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-3">Web Developer Intern</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-4">PT Jago Talenta Indonesia (JagooIT) - Kota Bandung, Jawa Barat</p>
+            <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed">
               Berperan sebagai Full-Stack Developer Intern yang menggarap fitur frontend dan backend pada sistem manajemen seleksi kandidat. Proyek ini memodernisasi proses rekrutmen di perusahaan outsourcing agar pengelolaan ribuan data kandidat dan jadwal seleksi jadi lebih cepat dan teratur. Di samping tugas development, saya juga membantu pengujian kualitas aplikasi lewat UAT dan menyusun materi pelatihan internal mengenai DevOps.
             </p>
           </div>
 
           <!-- Elemen Gambar Sertifikat -->
           <div class="mt-6">
-            <div class="bg-slate-50 p-2 sm:p-3 rounded-xl border border-pink-100 overflow-hidden shadow-inner max-w-2xl mx-auto group">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-2 sm:p-3 rounded-xl border border-pink-100 dark:border-slate-700 overflow-hidden shadow-inner max-w-2xl mx-auto group">
               <img 
                 src="magang.jpg" 
                 alt="Sertifikat Magang PT Jago Talenta Indonesia" 
@@ -278,19 +295,19 @@
   </section>
 
   <!-- TRAINING SECTION WITH CERTIFICATE IMAGES -->
-  <section id="training" class="py-20 bg-gradient-to-b from-white via-pink-50/20 to-white border-t border-slate-100">
+  <section id="training" class="py-20 bg-gradient-to-b from-white via-pink-50/20 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 border-t border-slate-100 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-10 reveal">
         <div class="w-2.5 h-7 bg-pink-500 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Trainings</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Trainings</h2>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Training 1 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="marketing.png" 
                 alt="Sertifikat BNSP Digital Marketing Berbasis AI" 
@@ -299,12 +316,12 @@
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">Sep 2026</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">Sep 2026</span>
                 <i class="fa-solid fa-award text-pink-400 group-hover:text-pink-500 transition-colors text-lg"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mt-2 group-hover:text-pink-600 transition-colors">Digital Marketing Berbasis AI</h3>
-              <p class="text-slate-500 text-sm font-medium mb-3">Asosiasi Digital Marketing Indonesia (DIGIMIND) & AIRA</p>
-              <p class="text-slate-600 text-sm leading-relaxed">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Digital Marketing Berbasis AI</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-3">Asosiasi Digital Marketing Indonesia (DIGIMIND) & AIRA</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 Menguasai strategi pemasaran digital berbasis kecerdasan buatan, riset tren pasar dengan SEMrush, Fastmoss, dan Google Trends, otomatisasi pembuatan konten menggunakan AI tools, serta pembuatan kampanye iklan melalui Google Ads.
               </p>
             </div>
@@ -312,9 +329,9 @@
         </div>
 
         <!-- Training 2 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="IoT.png" 
                 alt="Sertifikat Pelatihan 2" 
@@ -323,12 +340,12 @@
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">Dec 2022 - Jan 2023</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">Dec 2022 - Jan 2023</span>
                 <i class="fa-solid fa-award text-pink-400 group-hover:text-pink-500 transition-colors text-lg"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mt-2 group-hover:text-pink-600 transition-colors">Introduction to IoT</h3>
-              <p class="text-slate-500 text-sm font-medium mb-3">Cisco Networking Academy</p>
-              <p class="text-slate-600 text-sm leading-relaxed">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Introduction to IoT</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-3">Cisco Networking Academy</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 Mengikuti pelatihan Introduction to Internet of Things dari Cisco Networking Academy. Pelatihan ini membahas peran IoT dan transformasi digital dalam bisnis dan pemerintahan, pentingnya perangkat lunak dan data, manfaat otomatisasi serta Artificial Intelligence (AI), konsep Intent-Based Networking, serta pentingnya peningkatan keamanan di era digitalisasi.
               </p>
             </div>
@@ -336,9 +353,9 @@
         </div>
 
         <!-- Training 3 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="science.png" 
                 alt="Sertifikat Pelatihan 3" 
@@ -347,12 +364,12 @@
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">Nov 2022 - Jan 2023</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">Nov 2022 - Jan 2023</span>
                 <i class="fa-solid fa-award text-pink-400 group-hover:text-pink-500 transition-colors text-lg"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mt-2 group-hover:text-pink-600 transition-colors">Introduction to Data Science</h3>
-              <p class="text-slate-500 text-sm font-medium mb-3">Cisco Networking Academy</p>
-              <p class="text-slate-600 text-sm leading-relaxed">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Introduction to Data Science</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-3">Cisco Networking Academy</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 Mengikuti pelatihan Introduction to Data Science dari Cisco Networking Academy. Pelatihan ini membahas konsep dasar ilmu data, mencakup peluang dan tantangan dalam analisis data (data analytics), peran data dalam Kecerdasan Buatan (AI) dan Machine Learning, serta pemahaman jalur karier di bidang analisis data.
               </p>
             </div>
@@ -360,9 +377,9 @@
         </div>
 
         <!-- Training 4 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="cyber.png" 
                 alt="Sertifikat Pelatihan 4" 
@@ -371,12 +388,12 @@
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">Nov 2022 - Jan 2023</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">Nov 2022 - Jan 2023</span>
                 <i class="fa-solid fa-award text-pink-400 group-hover:text-pink-500 transition-colors text-lg"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mt-2 group-hover:text-pink-600 transition-colors">Introduction to Cybersecurity</h3>
-              <p class="text-slate-500 text-sm font-medium mb-3">Cisco Networking Academy</p>
-              <p class="text-slate-600 text-sm leading-relaxed">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Introduction to Cybersecurity</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-3">Cisco Networking Academy</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 Mengikuti pelatihan Introduction to Cybersecurity dari Cisco Networking Academy. Pelatihan ini membahas konsep dasar keamanan siber, identifikasi potensi ancaman dan kerentanan jaringan (network vulnerabilities), teknik deteksi ancaman (threat detection), serta prinsip perlindungan data dan privasi (privacy & data confidentiality) bagi individu maupun organisasi.
               </p>
             </div>
@@ -384,9 +401,9 @@
         </div>
 
         <!-- Training 5 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="aws.png" 
                 alt="Sertifikat Pelatihan AWS Academy" 
@@ -395,12 +412,12 @@
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100">Oct 2022 - Dec 2022</span>
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600">Oct 2022 - Dec 2022</span>
                 <i class="fa-solid fa-award text-pink-400 group-hover:text-pink-500 transition-colors text-lg"></i>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 mt-2 group-hover:text-pink-600 transition-colors">AWS Academy Graduate - Cloud Developing</h3>
-              <p class="text-slate-500 text-sm font-medium mb-3">Amazon Web Services Training and Certification</p>
-              <p class="text-slate-600 text-sm leading-relaxed">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">AWS Academy Graduate - Cloud Developing</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-3">Amazon Web Services Training and Certification</p>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 Mengikuti program pelatihan AWS Academy Graduate - Cloud Developing selama 40 jam. Pelatihan ini mencakup pemahaman mendasar mengenai konsep cloud computing, pengembangan dan penyebaran (deployment) aplikasi menggunakan layanan Amazon Web Services (AWS), pengelolaan basis data cloud, serta penerapan praktik keamanan (security best practices) dalam arsitektur cloud.
               </p>
             </div>
@@ -412,19 +429,19 @@
   </section>
 
   <!-- PROJECTS SECTION -->
-  <section id="projects" class="py-20 bg-white border-t border-slate-100">
+  <section id="projects" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-10 reveal">
         <div class="w-2.5 h-7 bg-pink-500 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Projects</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Projects</h2>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Project Card 1 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="plantain.png" 
                 alt="Plantain - Aplikasi scanner penyakit daun pisang" 
@@ -432,36 +449,36 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">Mobile App</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">Plantain - Aplikasi Scanner Penyakit Daun Pisang</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">Mobile App</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Plantain - Aplikasi Scanner Penyakit Daun Pisang</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Aplikasi Android berbasis Kecerdasan Buatan (AI) yang dirancang untuk mendeteksi jenis penyakit pada daun pisang secara akurat melalui gambar. Sistem ini dikembangkan memanfaatkan metode Transfer Learning dengan arsitektur EfficientNet-B2 yang dilatih menggunakan lebih dari 3.000 dataset gambar daun pisang, menghasilkan performa klasifikasi yang optimal dan responsif pada perangkat mobile.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">TensorFlow</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">TensorFlow Lite</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flutter</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Python</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Dart</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">REST API</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flask</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">SQL</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Laragon</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Postman</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">HeidiSQL</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Visual Studio Code</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">TensorFlow</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">TensorFlow Lite</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flutter</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Python</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Dart</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">REST API</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flask</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">SQL</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Laragon</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Postman</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">HeidiSQL</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Visual Studio Code</span>
             </div>
           </div>
         </div>
 
         <!-- Project Card 2 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="jagoohire.png" 
                 alt="Proyek 2" 
@@ -469,31 +486,31 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">Web App</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">JagooHire</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">Web App</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">JagooHire</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Sistem manajemen rekrutmen talenta terintegrasi untuk PT Jago Talenta Indonesia (JagooIT). JAGOOHIRE hadir untuk mengoptimalkan efisiensi pemantauan proses seleksi kandidat secara terstruktur, transparan, dan sesuai dengan SOP perusahaan yang berlaku.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flask</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Vue.js</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">MySQL</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Rest API</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Visual Studio Code</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Postman</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Python</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flask</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Vue.js</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">MySQL</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Rest API</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Visual Studio Code</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Postman</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Python</span>
             </div>
           </div>
         </div>
 
         <!-- Project Card 3 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="siwata.png" 
                 alt="Proyek 3" 
@@ -501,31 +518,31 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">Web App</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">SIWATA - Sistem Penjadwalan Tugas Akhir</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">Web App</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">SIWATA - Sistem Penjadwalan Tugas Akhir</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Sistem ini dirancang untuk memudahkan penjadwalan sidang tugas akhir mahasiswa dan untuk menghindari terjadinya jadwal yang bentrok, serta memudahkan pemantauan progres tugas akhir mahasiswa.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Laravel</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">PHP</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">MySQL</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Visual Studio Code</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Trello</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Postman</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Bootstrap</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Laravel</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">PHP</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">MySQL</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Visual Studio Code</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Trello</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Postman</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Bootstrap</span>
             </div>
           </div>
         </div>
 
         <!-- Project Card 4 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="kos.png" 
                 alt="Proyek 4" 
@@ -533,30 +550,30 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">Web App</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">Kos Letter U - Sistem Manajemen Kos</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">Web App</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Kos Letter U - Sistem Manajemen Kos</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Sistem ini dibangun secara personal yang bertujuan untuk memudahkan pemilik kos melakukan pengelolaan kamar kost yang banyak. Sistem Manajemen Kost Letter U memilki design antarmuka yang menarik dan mudah dipahami oleh pengguna.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flask</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Python</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Vue.js</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">MySQL</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Postman</span>
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Visual Studio Code</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flask</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Python</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Vue.js</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">MySQL</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Postman</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Visual Studio Code</span>
             </div>
           </div>
         </div>
 
         <!-- Project Card 5 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="ball.png" 
                 alt="Proyek 5" 
@@ -564,35 +581,35 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">Mobile App</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">Tect Ball - Aplikasi Deteksi Jenis Bola</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">Mobile App</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Tect Ball - Aplikasi Deteksi Jenis Bola</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Membuat pemodelan untuk mendeteksi jenis bola olahraga yaitu bola basket, voli, dan kaki. Pemodelan menggunakan algoritma Convolutional Neural Network dan Transfer Learning, dengan jumlah dataset gambar seluruhnya kurang lebih 2000 dan menggunakan Tensorflow dalam membuat pemodelan. Pemodelan ini memiliki tingkat akurasi sebesar 90%.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">TensorFlow</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">TensorFlow Lite</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flutter</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Python</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Dart</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">REST API</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Flask</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">MySQL</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Laragon</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Postman</span>
-                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Visual Studio Code</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">TensorFlow</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">TensorFlow Lite</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flutter</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Python</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Dart</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">REST API</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Flask</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">MySQL</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Laragon</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Postman</span>
+                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Visual Studio Code</span>
                 </div>
             </div>
         </div>
 
         <!-- Project Card 6 -->
-        <div class="bg-white rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-xl hover:border-pink-300 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-pink-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-pink-300 dark:hover:border-pink-500/50 transition duration-300 hover:-translate-y-1.5 group flex flex-col justify-between reveal">
           <div>
-            <div class="bg-slate-50 p-3 overflow-hidden relative border-b border-pink-100 flex items-center justify-center">
+            <div class="bg-slate-50 dark:bg-slate-900/60 p-3 overflow-hidden relative border-b border-pink-100 dark:border-slate-700 flex items-center justify-center">
               <img 
                 src="spadati.png" 
                 alt="Proyek 6" 
@@ -600,16 +617,16 @@
               />
             </div>
             <div class="p-6">
-              <span class="text-[11px] font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-100 uppercase tracking-wider">UI/UX Design</span>
-              <h3 class="text-lg font-bold text-slate-900 mt-2.5 group-hover:text-pink-600 transition-colors">SPADATI</h3>
-              <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+              <span class="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-slate-700 px-2.5 py-1 rounded-md border border-pink-100 dark:border-slate-600 uppercase tracking-wider">UI/UX Design</span>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2.5 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">SPADATI</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 leading-relaxed">
                 Membuat perancangan antarmuka Sistem Pembelajaran Daring Teknologi Informasi (SPADATI) yang user friendly dan desain yang menarik.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6">
             <div class="flex flex-wrap gap-1.5 mt-2">
-              <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium hover:bg-pink-100 hover:text-pink-700 transition">Figma</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-medium hover:bg-pink-100 dark:hover:bg-pink-900/40 hover:text-pink-700 dark:hover:text-pink-300 transition">Figma</span>
             </div>
           </div>
         </div>
@@ -619,23 +636,23 @@
   </section>
 
   <!-- CONTACT SECTION -->
-  <section id="contact" class="py-20 bg-gradient-to-b from-pink-50/50 to-white border-t border-pink-100 relative">
+  <section id="contact" class="py-20 bg-gradient-to-b from-pink-50/50 to-white dark:from-slate-800/50 dark:to-slate-900 border-t border-pink-100 dark:border-slate-800 relative">
     <div class="max-w-4xl mx-auto px-6 text-center reveal">
-      <h2 class="text-3xl font-bold text-slate-900 mb-3 tracking-tight">Mari Bekerja Sama</h2>
-      <p class="text-slate-600 text-sm sm:text-base mb-8">
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">Mari Bekerja Sama</h2>
+      <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mb-8">
         Terbuka untuk kesempatan kerja, proyek kolaborasi, atau diskusi teknis.
       </p>
       <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
-        <a href="mailto:aurazulaikha00@gmail.com" class="flex items-center gap-2 bg-white hover:bg-pink-50 px-5 py-3 rounded-xl text-pink-600 border border-pink-200 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md">
+        <a href="mailto:aurazulaikha00@gmail.com" class="flex items-center gap-2 bg-white dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-slate-700 text-pink-600 border border-pink-200 dark:border-slate-700 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md px-6 py-3 rounded-xl">
           <i class="fa-solid fa-envelope"></i> aurazulaikha00@gmail.com
         </a>
-        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-2 bg-white hover:bg-pink-50 px-5 py-3 rounded-xl text-pink-600 border border-pink-200 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md">
-          <i class="fa-solid fa-phone"></i> +62 813-7275-3790
+        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center gap-2 bg-white dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-slate-700 text-pink-600 border border-pink-200 dark:border-slate-700 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md px-6 py-3 rounded-xl">
+          <i class="fa-solid fa-phone"></i> +62 812-3456-7890
         </a>
-        <a href="https://www.linkedin.com/in/aura-zulaikha-612162294/" target="_blank" class="flex items-center gap-2 bg-white hover:bg-pink-50 px-5 py-3 rounded-xl text-pink-600 border border-pink-200 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md">
+        <a href="https://www.linkedin.com/in/aura-zulaikha-612162294/" target="_blank" class="flex items-center gap-2 bg-white dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-slate-700 text-pink-600 border border-pink-200 dark:border-slate-700 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md px-6 py-3 rounded-xl">
           <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
-        <a href="https://github.com/aurazulaikha" target="_blank" class="flex items-center gap-2 bg-white hover:bg-pink-50 px-5 py-3 rounded-xl text-pink-600 border border-pink-200 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md">
+        <a href="https://github.com/aurazulaikha" target="_blank" class="flex items-center gap-2 bg-white dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-slate-700 text-pink-600 border border-pink-200 dark:border-slate-700 shadow-sm transition duration-300 hover:scale-105 hover:shadow-md px-6 py-3 rounded-xl">
           <i class="fa-brands fa-github"></i> GitHub
         </a>
       </div>
@@ -643,7 +660,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-6 bg-pink-100/60 text-center text-pink-700 font-medium text-xs border-t border-pink-200/50">
+  <footer class="py-6 bg-pink-100/60 dark:bg-slate-950 text-center text-pink-700 dark:text-pink-400 font-medium text-xs border-t border-pink-200/50 dark:border-slate-800">
     &copy; 2026 Aura Zulaikha. All rights reserved.
   </footer>
 
@@ -654,6 +671,53 @@
 
   <!-- SCRIPT INTERAKTIVITAS & ANIMASI -->
   <script>
+    // --- LOGIKA DARK / LIGHT MODE ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+    const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+    function updateThemeIcons(isDark) {
+      if (isDark) {
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleDarkIcon.classList.add('hidden');
+        themeToggleLightIconMobile.classList.remove('hidden');
+        themeToggleDarkIconMobile.classList.add('hidden');
+      } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleDarkIconMobile.classList.remove('hidden');
+        themeToggleLightIconMobile.classList.add('hidden');
+      }
+    }
+
+    // Mengikuti preferensi default perangkat/browser pengguna jika belum diset manual
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      updateThemeIcons(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      updateThemeIcons(false);
+    }
+
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+        updateThemeIcons(false);
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+        updateThemeIcons(true);
+      }
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
     // Toggle Mobile Menu
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -682,11 +746,11 @@
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 30) {
-        navbar.classList.add('shadow-md', 'bg-white/95');
-        navbar.classList.remove('bg-white/80');
+        navbar.classList.add('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+        navbar.classList.remove('bg-white/80', 'dark:bg-slate-900/80');
       } else {
-        navbar.classList.remove('shadow-md', 'bg-white/95');
-        navbar.classList.add('bg-white/80');
+        navbar.classList.remove('shadow-md', 'bg-white/95', 'dark:bg-slate-900/95');
+        navbar.classList.add('bg-white/80', 'dark:bg-slate-900/80');
       }
 
       if (window.scrollY > 300) {
